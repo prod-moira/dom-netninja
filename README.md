@@ -79,3 +79,11 @@
 - `.children` returns an *HTMLCollection* of only element nodes (ignores text and comment nodes).
 - Use `.children` when you only care about HTML elements and want to ignore whitespace or comments.
 - Use `.childNodes` if you want to include everything inside the parent node.
+
+## 08: Vid 8 • Traversing the DOM (Part 2)
+- `.nextSibling` returns the *next node* in the DOM, which can be an element, text node (like whitespace), or comment.
+- `.nextElementSibling` returns the *next sibling that is an element* (ignores text and comments).
+- Use `.nextElementSibling` when you want to move to the next actual HTML element in the DOM.
+- `.previousSibling` returns the *previous node* (can include whitespace or comment nodes).
+- `.previousElementSibling` returns the *previous sibling that is an element only*.
+- Use `.previousElementSibling` to safely move to the previous HTML element without hitting text nodes.
