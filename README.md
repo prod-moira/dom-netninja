@@ -14,3 +14,15 @@
 - You can also store the selected element in a variable for easier access. For example:
     - `var banner = document.getElementById('page-banner')`
     - You can now access and interact with this variable (`banner`) through the console.
+
+## 03: Vid 3 • getElementsByClassName & getElementsByTagName
+- To select multiple elements that share the same class, use the `getElementsByClassName()` method.
+- This method returns an HTMLCollection, which is array-like but not a true array.
+- You can store the returned collection in a variable and access individual elements using bracket notation:
+    - `var titles = document.getElementsByClassName('title');`
+    - `console.log(titles[0]);`
+- To select multiple elements by their HTML tag name (e.g. all <li> or <h1> elements), use `getElementsByTagName()`.
+- It also returns an HTMLCollection, and you can access its items the same way.
+- You can loop through an HTMLCollection using a for loop. However, if you want to use array methods like `forEach()`, you'll need to convert it to an actual array first:
+    - `Array.from(titles).forEach(function(item) { console.log(item); });`
+- **Note**: All related code, including the for loop, is written in app.js.
