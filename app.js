@@ -1,7 +1,8 @@
-var books = document.querySelectorAll('#book-list li .name')
+var btns = document.querySelectorAll(`#book-list .delete`);
 
-books.forEach(function(book){
-    console.log(book.textContent += ' (Book Title)')
-}); 
-
-const bookList = document.querySelector('#book-list');
+btns.forEach(function(button){
+    button.addEventListener('click', function(e){
+        const li = e.target.parentElement;
+        li.parentNode.removeChild(li);
+    })
+})

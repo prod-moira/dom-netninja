@@ -87,3 +87,27 @@
 - `.previousSibling` returns the *previous node* (can include whitespace or comment nodes).
 - `.previousElementSibling` returns the *previous sibling that is an element only*.
 - Use `.previousElementSibling` to safely move to the previous HTML element without hitting text nodes.
+
+## 09: Vid 9 • Events
+- In `app.js`:
+- `var btns = document.querySelectorAll('#book-list .delete');`
+    - Selects all elements with the class `.delete` inside the `#book-list` container.
+    - Returns a **NodeList** of delete buttons.
+- `btns.forEach(function(button) { ... })`
+    - Loops through each delete button using `forEach()`.
+    - The **callback function** runs once for every button in the NodeList.
+- `button.addEventListener('click', function(e) { ... })`
+    - Adds a **click event listener** to each delete button.
+    - The first argument `'click'` is the event type.
+        - Other common events include: `'mouseover'`, `'mouseout'`, `'keydown'`, `'submit'`, etc.
+    - The second argument is a **callback function** that runs when the event is triggered.
+    - `e` is the **event object** containing details about the interaction.
+- `const li = e.target.parentElement;`
+    - `e.target` refers to the **actual element that was clicked** (the delete `<span>`).
+    - `.parentElement` accesses the `<li>` containing both the book name and the delete button.
+- `li.parentNode.removeChild(li);`
+    - `li.parentNode` gets the `<ul>` element that holds the list items.
+    - `.removeChild(li)` removes the clicked `<li>` from the DOM.
+- `e.preventDefault();`: Prevents the default behavior of an element. Commonly used to stop forms from submitting and reloading the page.
+- Overall:
+  - Clicking a delete button removes its entire parent list item from the document.
