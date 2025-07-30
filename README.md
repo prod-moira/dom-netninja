@@ -51,3 +51,22 @@
 - `textContent` is safer for handling user input or when you don't want to deal with HTML.
 - `innerHTML` is more powerful when injecting dynamic markup, but should be used carefully.
 - When we want to add to the existing content instead of replacing it, we use the `+=` operator.
+
+## 06: Vid 6 • DOM Nodes & Node Types
+- In the DOM (Document Object Model), everything in an HTML document is a node.
+- A node is a single point in the document tree — it can be an element, a piece of text, a comment, etc.
+- When we access elements using JavaScript (like with `querySelector()`), we're working with these DOM nodes.
+    - Common node types:
+        - **Element Node** → nodeType 1
+        - **Text Node** → nodeType 3
+        - **Comment Node** → nodeType 8
+        - **Document Node** → nodeType 9
+- `.nodeType` returns a number that tells you what type of node it is.
+    - Example: console.log(node.nodeType); // 1 for element, 3 for text, etc.
+- `.nodeName` returns the name of the node as a string.
+    - For elements: the tag name in all caps (e.g. DIV, SPAN)
+    - For text nodes: #text
+- `.hasChildNodes()` returns true if the node has any child nodes (including text, comments, or elements), otherwise false.
+- `.cloneNode()` creates a copy of the node.
+    - Use .cloneNode(true) to deeply clone the node and all its children.
+    - Use .cloneNode(false) to only copy the node itself (no children).
