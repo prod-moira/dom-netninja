@@ -5,4 +5,3 @@ books.forEach(function(book){
 }); 
 
 const bookList = document.querySelector('#book-list');
-console.log(bookList.innerHTML);

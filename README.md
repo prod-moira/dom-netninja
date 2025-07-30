@@ -21,7 +21,7 @@
 - You can store the returned collection in a variable and access individual elements using bracket notation:
     - `var titles = document.getElementsByClassName('title');`
     - `console.log(titles[0]);`
-- To select multiple elements by their HTML tag name (e.g. all <li> or <h1> elements), use `getElementsByTagName()`.
+- To select multiple elements by their HTML tag name (e.g. all < li > or < h1 > elements), use `getElementsByTagName()`.
 - It also returns an HTMLCollection, and you can access its items the same way.
 - You can loop through an HTMLCollection using a for loop. However, if you want to use array methods like `forEach()`, you'll need to convert it to an actual array first:
     - `Array.from(titles).forEach(function(item) { console.log(item); });`
@@ -62,11 +62,20 @@
         - **Comment Node** → nodeType 8
         - **Document Node** → nodeType 9
 - `.nodeType` returns a number that tells you what type of node it is.
-    - Example: console.log(node.nodeType); // 1 for element, 3 for text, etc.
+    - Example: `console.log(node.nodeType);` // 1 for element, 3 for text, etc.
 - `.nodeName` returns the name of the node as a string.
     - For elements: the tag name in all caps (e.g. DIV, SPAN)
     - For text nodes: #text
 - `.hasChildNodes()` returns true if the node has any child nodes (including text, comments, or elements), otherwise false.
 - `.cloneNode()` creates a copy of the node.
-    - Use .cloneNode(true) to deeply clone the node and all its children.
-    - Use .cloneNode(false) to only copy the node itself (no children).
+    - Use `.cloneNode(true)` to deeply clone the node and all its children.
+    - Use `.cloneNode(false)` to only copy the node itself (no children).
+
+## 07: Vid 7 • Traversing the DOM (Part 1)
+- `.parentNode` returns the parent *node* of an element (can be an element, document, or comment).
+- `.parentElement` returns the parent *only if it’s an element*; otherwise, it returns `null`.
+- Use `.parentElement` when you only want to work with actual HTML elements.
+- `.childNodes` returns a *NodeList* of all child nodes, including text nodes, comment nodes, and element nodes.
+- `.children` returns an *HTMLCollection* of only element nodes (ignores text and comment nodes).
+- Use `.children` when you only care about HTML elements and want to ignore whitespace or comments.
+- Use `.childNodes` if you want to include everything inside the parent node.
