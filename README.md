@@ -37,3 +37,17 @@
 - You can loop through it using `forEach()`.
     - ` var books = document.querySelectorAll('#book-list li .name')` // All elements with class "name" inside list items
     - `books.forEach(book => console.log(book));`
+
+## 05: Vid 5 • innerHTML & textContent
+- When we want to get or change the HTML content inside an element, we use `innerHTML`.
+- It reads or writes HTML tags as well as text.
+    - `element.innerHTML = '<em>Hi there</em>';` // Inserts HTML markup
+    - `console.log(element.innerHTML);` // Might return something like <strong>Hello</strong>
+- Be careful: setting `innerHTML` can make your site vulnerable if you insert user-generated content.
+- If we want to get or change only the text (ignoring any HTML tags), we use `textContent`.
+- It reads or writes plain text only.
+    - `element.textContent = '<em>Hi there</em>';` // Displays exactly: <em>Hi there</em>
+    - `console.log(element.textContent);` // Returns just the text, e.g. Hello
+- `textContent` is safer for handling user input or when you don't want to deal with HTML.
+- `innerHTML` is more powerful when injecting dynamic markup, but should be used carefully.
+- When we want to add to the existing content instead of replacing it, we use the `+=` operator.
