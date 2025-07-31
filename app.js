@@ -1,8 +1,8 @@
-var btns = document.querySelectorAll(`#book-list .delete`);
+const list = document.querySelector('#book-list ul');
 
-btns.forEach(function(button){
-    button.addEventListener('click', function(e){
+list.addEventListener('click', function(e){
+    if(e.target.className == "delete"){
         const li = e.target.parentElement;
-        li.parentNode.removeChild(li);
-    })
+        list.removeChild(li);
+    }
 })

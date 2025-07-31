@@ -109,5 +109,27 @@
     - `li.parentNode` gets the `<ul>` element that holds the list items.
     - `.removeChild(li)` removes the clicked `<li>` from the DOM.
 - `e.preventDefault();`: Prevents the default behavior of an element. Commonly used to stop forms from submitting and reloading the page.
-- Overall:
-  - Clicking a delete button removes its entire parent list item from the document.
+- Overall: Clicking a delete button removes its entire parent list item from the document.
+
+## 10: Vid 10 • Event Bubbling
+- **Event bubbling** is how events travel up the DOM tree.
+- When you click an element, like a `button` inside a `li`, the event starts at the clicked element, then *bubbles up* to its parent, then its grandparent, and so on — all the way up to the `html` element.
+- You can use event bubbling for event delegation — adding one listener to a parent instead of many to individual children.
+- In `app.js`:
+    - - `const list = document.querySelector('#book-list ul');`
+        - Selects the `<ul>` element inside the `#book-list` container.
+        - Stores it in the `list` variable to attach a single event listener.
+    - `list.addEventListener('click', function(e) { ... })`
+        - Adds a *click event listener* to the entire `<ul>` list.
+        - This is an example of *event delegation*.
+        - `e` is the *event object*, automatically passed to the callback function.
+    - `if(e.target.className == "delete") { ... }`
+        - `e.target` refers to the *specific element that was clicked* — ideally the delete button.
+        - Checks if the clicked element has the class `"delete"` before doing anything.
+        - `.className` gets the value of the `class` attribute of that element
+    - `const li = e.target.parentElement;`
+        - Gets the parent `<li>` of the clicked delete button.
+        - This is the book item we want to remove.
+    - `list.removeChild(li);`
+        - Removes the `<li>` element from the list.
+        - This effectively deletes the book item from the DOM.
