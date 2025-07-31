@@ -116,7 +116,7 @@
 - When you click an element, like a `button` inside a `li`, the event starts at the clicked element, then *bubbles up* to its parent, then its grandparent, and so on — all the way up to the `html` element.
 - You can use event bubbling for event delegation — adding one listener to a parent instead of many to individual children.
 - In `app.js`:
-    - - `const list = document.querySelector('#book-list ul');`
+    - `const list = document.querySelector('#book-list ul');`
         - Selects the `<ul>` element inside the `#book-list` container.
         - Stores it in the `list` variable to attach a single event listener.
     - `list.addEventListener('click', function(e) { ... })`
@@ -133,3 +133,26 @@
     - `list.removeChild(li);`
         - Removes the `<li>` element from the list.
         - This effectively deletes the book item from the DOM.
+
+## 11: Vid 11 • Interacting with Forms
+- This handles the process of *adding a new book* to a list using a form input.  
+  When the user types a book title and submits the form, the app captures the input value without refreshing the page.
+- In `app.js`:
+    - `const addForm = document.forms['add-book'];`
+        - Selects the `<form name="add-book">` element from the DOM.
+        - `document.forms` is a collection of all `<form>` elements on the page, accessible by their `name` attribute.
+        - Stores the form element in the `addForm` variable so you can attach an event listener to it.
+    - `addForm.addEventListener('submit', function(e) { ... })`
+        - Adds a *submit event listener* to the form.
+        - The `'submit'` event fires when the user presses Enter or clicks the submit button.
+        - `e` is the event object that gets passed to the callback.
+    - `e.preventDefault();`
+        - Prevents the default behavior of the form, which would normally reload the page.
+        - This allows you to handle the form submission entirely with JavaScript.
+    - `const value = addForm.querySelector('input[type="text"]').value;`
+        - Selects the text input field inside the form using a CSS selector.
+        - `.value` gets the current content the user typed into the input field.
+        - Stores that value in a variable so it can be logged, added to a list, or otherwise used.
+    - `console.log(value);`
+        - Logs the user's input to the console.
+        - Useful for debugging or confirming the input was successfully retrieved.
