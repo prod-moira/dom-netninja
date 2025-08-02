@@ -198,10 +198,12 @@
         - This allows you to style all book name spans using `.name { ... }` in your CSS.  
         - `classList` is a built-in property that returns a DOMTokenList of the element’s classes.  
         - `.add()` is a method that appends a class to the element’s existing class list (without overwriting others).  
+        - You can also use `.classList.remove("name")` to remove a class if needed later.  
     - `deleteBtn.classList.add("delete");`  
         - Adds the `"delete"` class to the `deleteBtn` `<span>` element.  
         - This makes it easier to select all delete buttons via `.delete { ... }` in CSS.  
         - Helps in applying hover effects, cursor changes, positioning, etc.
+        - Similarly, `classList.remove("delete")` would remove the class.
 - You *can* also style elements directly in JavaScript using `.style`, like:  
     - `bookName.style.color = "red";`  
         - This would make the book name appear red.  
@@ -209,5 +211,37 @@
         - Styling should usually be handled in CSS, not inline via JS, especially in larger projects.  
 - Best Practice:  
     - Use `.classList.add()` to assign reusable classes to elements.  
+    - Use `.classList.remove()` to take them off if needed dynamically.  
     - Define all styles in your CSS file instead of hardcoding them with `.style`.
+
+## 14: Vid 14 • Attributes
+- These methods let you *read, modify, check,* or *remove* HTML attributes from elements using JavaScript.  
+  They’re especially useful when dealing with custom attributes or dynamically updating things like `href`, `id`, or `data-*`.
+- In `app.js` or any DOM script:  
+    - `element.getAttribute("type");`  
+        - Retrieves the value of the specified attribute from the element.  
+        - For example: `input.getAttribute("type")` might return `"text"` or `"password"`.  
+        - If the attribute doesn’t exist, it returns `null`.  
+    - `element.setAttribute("type", "password");`  
+        - Sets or updates the value of an attribute on the element.  
+        - If the attribute exists, it will be overwritten.  
+        - If it doesn’t exist, it will be created.  
+        - Example: turning an input field into a password field.
+    - `element.hasAttribute("href");`  
+        - Checks if the element has a specific attribute.  
+        - Returns `true` or `false`.  
+        - Useful for conditional logic like: `if (link.hasAttribute("href")) { ... }`
+    - `element.removeAttribute("class");`  
+        - Completely removes the specified attribute from the element.  
+        - The element will behave as if the attribute was never there.  
+        - Example: `button.removeAttribute("disabled")` will make the button clickable again.
+- Extra Notes:  
+    - These methods are especially useful when working with custom `data-*` attributes:  
+        - `element.getAttribute("data-id")` or `setAttribute("data-category", "fiction")`.  
+        - Can be used to store extra info in the HTML without affecting layout or style.  
+    - Compared to `.classList` (which specifically targets the class attribute), these methods are more *general-purpose*.
+- Best Practice:  
+    - Use `getAttribute()` and `setAttribute()` when working with non-style-related properties.  
+    - For classes, prefer `.classList`; for inline styles, avoid `.style` when possible.
+
 
