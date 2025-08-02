@@ -30,6 +30,10 @@ addForm.addEventListener('submit', function(e){
     deleteBtn.textContent = "delete"; // Not appended properly as a button because it doesnt have a class attribute
     li.textContent = value;
 
+    // Add classes
+    bookName.classList.add("name");
+    deleteBtn.classList.add("delete");
+
     // Structure the new elements (how we append them to the DOM)
     li.appendChild(bookName); // Nest the booknName inside the li (also, name goes first in the DOM)
     li.appendChild(deleteBtn); // Same with the delete button

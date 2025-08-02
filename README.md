@@ -188,3 +188,26 @@
         - `list.appendChild(li);`  
             - Inserts the fully structured `<li>` element into the book list on the page.  
             - Makes the newly added book visible in the UI.
+
+## 13: Vid 13 • classList.add
+- This step adds *CSS classes* to the dynamically created elements so they can be styled properly with external CSS.  
+  Without this step, elements like the *delete* button won’t have any visual distinction or behavior tied to them.
+- In `app.js` (after creating the elements):  
+    - `bookName.classList.add("name");`  
+        - Adds the `"name"` class to the `bookName` `<span>` element.  
+        - This allows you to style all book name spans using `.name { ... }` in your CSS.  
+        - `classList` is a built-in property that returns a DOMTokenList of the element’s classes.  
+        - `.add()` is a method that appends a class to the element’s existing class list (without overwriting others).  
+    - `deleteBtn.classList.add("delete");`  
+        - Adds the `"delete"` class to the `deleteBtn` `<span>` element.  
+        - This makes it easier to select all delete buttons via `.delete { ... }` in CSS.  
+        - Helps in applying hover effects, cursor changes, positioning, etc.
+- You *can* also style elements directly in JavaScript using `.style`, like:  
+    - `bookName.style.color = "red";`  
+        - This would make the book name appear red.  
+        - However, *this is not recommended* for maintainability and separation of concerns.  
+        - Styling should usually be handled in CSS, not inline via JS, especially in larger projects.  
+- Best Practice:  
+    - Use `.classList.add()` to assign reusable classes to elements.  
+    - Define all styles in your CSS file instead of hardcoding them with `.style`.
+
