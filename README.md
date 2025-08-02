@@ -156,3 +156,35 @@
     - `console.log(value);`
         - Logs the user's input to the console.
         - Useful for debugging or confirming the input was successfully retrieved.
+
+## 12: Vid 12 • createElement, textContent, and appendChild
+- This handles the process of *dynamically creating* HTML elements when the user submits a new book title.  
+  The elements are structured and inserted into the DOM without refreshing the page.
+- In `app.js` (inside the `submit` event listener): 
+- First, we create the element or tags themselves: 
+    - `const li = document.createElement("li");`  
+        - Creates a new `<li>` element to represent a book in the list.  
+        - This will eventually be appended to the book list in the DOM.  
+    - `const bookName = document.createElement("span");`  
+        - Creates a `<span>` element that will hold the book’s title.  
+        - This keeps the structure consistent and allows for styling or future manipulation.  
+    - `const deleteBtn = document.createElement("span");`  
+        - Creates a `<span>` to serve as the delete button.  
+        - Later, this can be styled or made functional by assigning a class and adding event listeners. 
+- Then, we append the value or context for each element. 
+    - `deleteBtn.textContent = "delete";`  
+        - Sets the text inside the delete button to `"delete"`.  
+        - Currently it’s just a span, not a real button, and has no class yet, so it won’t be styled properly.  
+    - `bookName.textContent = value;`  
+        - Assigns the user’s input (book title) as the text content of the `bookName` span.  
+        - This prevents overwriting the entire `<li>`'s children structure.  
+- Then we structure the elements based on this element's siblings: 
+        - `li.appendChild(bookName);`  
+            - Adds the `bookName` span (which contains the book title) into the `<li>`.  
+            - Book name should appear first in the structure.  
+        - `li.appendChild(deleteBtn);`  
+            - Adds the delete button next to the book name inside the same `<li>`.
+- Lastly, we append it to the main list:
+        - `list.appendChild(li);`  
+            - Inserts the fully structured `<li>` element into the book list on the page.  
+            - Makes the newly added book visible in the UI.
