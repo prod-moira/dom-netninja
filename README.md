@@ -244,4 +244,8 @@
     - Use `getAttribute()` and `setAttribute()` when working with non-style-related properties.  
     - For classes, prefer `.classList`; for inline styles, avoid `.style` when possible.
 
-
+## 15: Vid 15 • Checkboxes and Change Events
+- `#hide` is a checkbox input that toggles visibility of book list.
+- The *change* event listens for when the checkbox is ticked or unticked.
+- The `.checked` property tells us if it’s currently checked.
+- Depending on the value, we hide or show the list using `display: none` or `display: initial`.

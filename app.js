@@ -41,3 +41,13 @@ addForm.addEventListener('submit', function(e){
     // Now that the element is created and structured, we can now append to the list
     list.appendChild(li);
 })
+
+// Hide books
+const hideBox = document.querySelector('#hide');
+hideBox.addEventListener('change', function(e){
+    if(hideBox.checked){
+        list.style.display = "none";
+    } else {
+        list.style.display = "initial";
+    }
+})
