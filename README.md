@@ -249,3 +249,39 @@
 - The *change* event listens for when the checkbox is ticked or unticked.
 - The `.checked` property tells us if it’s currently checked.
 - Depending on the value, we hide or show the list using `display: none` or `display: initial`.
+
+## 16: Vid 16 • Custom Search Filter
+- This feature allows users to *dynamically filter a list* of books by typing into a search box.  It listens for keypresses and shows/hides books depending on whether the title matches the search term.
+
+- In `app.js` or any DOM script:  
+    - `const searchBar = document.forms['search-books'].querySelector('input');`  
+        - Selects the search input field inside the form with the name `search-books`.  
+        - We use `document.forms['formName']` to access the form, then chain `.querySelector()` to get the `<input>` inside it.  
+    - `const list = document.querySelector('#book-list ul');`  
+        - Selects the `<ul>` that contains the list of books.  
+        - This is where the `<li>` items (books) are stored.  
+    - `searchBar.addEventListener('keyup', function(e) { ... });`  
+        - Adds an event listener that runs the callback every time the user types (and releases a key).  
+        - Useful for live, real-time updates to the display.  
+    - `const term = e.target.value.toLowerCase();`  
+        - Gets the current input text and converts it to lowercase for *case-insensitive matching*.  
+        - `e.target.value` is the current value in the search box.  
+    - `const books = list.getElementsByTagName("li");`  
+        - Retrieves all `<li>` elements inside the book list.  
+        - Returns an *HTMLCollection*, so we need to convert it to an array to use `forEach()`.  
+    - `Array.from(books).forEach(function(book) { ... });`  
+        - Converts the HTMLCollection to an array and loops over each book.  
+        - `book.firstElementChild.textContent` grabs the title of each book (usually an `<h3>` or similar).  
+        - `if (title.toLowerCase().indexOf(term) != -1) { ... }`  
+            - Checks if the search term exists in the book’s title.  
+            - `indexOf()` returns `-1` if the term is not found.  
+        - `book.style.display = 'block';` / `book.style.display = 'none';`  
+            - Shows or hides each book depending on the match result.
+- Extra Notes:  
+    - This kind of functionality is great for **user-friendly filtering** without refreshing the page.  
+    - `indexOf()` is commonly used for simple matching, but you could also use `.includes()` for readability.  
+    - The HTML structure must be consistent—e.g., the book title should always be in the same child element of `<li>`.  
+- Best Practice:  
+    - Use `toLowerCase()` on both input and target text to keep the search case-insensitive.  
+    - Convert collections like `HTMLCollection` to arrays with `Array.from()` for easier iteration.  
+    - Keep the DOM structure clean and predictable for easier traversal.
