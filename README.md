@@ -288,7 +288,6 @@
 
 ## 17: Vid 17 • Creating Tabbed Content
 - This feature allows users to switch between different panels (e.g., "About", "Contact") without reloading the page. Clicking a tab updates which panel is shown based on a `data-target` attribute.  
-
 - In `app.js` or any DOM script:  
     - `const tabs = document.querySelector('.tabs');`  
         - Selects the `<ul>` element containing the tab `<li>` items.  
@@ -319,3 +318,17 @@
     - Keep your panel IDs consistent with your `data-target` values.  
     - Manage active states for both tabs and panels so the UI updates visually and functionally.  
 - **Note**: Clear feature for `add-book` was added.
+
+## 18: Vid 18 • DOMContentLoaded Event
+- This event fires when the *initial HTML document has been completely loaded and parsed*, without waiting for external resources like images, stylesheets, or iframes to finish loading.  
+- In `app.js` or any DOM script:  
+    - `document.addEventListener('DOMContentLoaded', function() { ... });`  
+        - Listens for the `DOMContentLoaded` event on the `document` object.  
+        - The callback inside will run only after the HTML is fully loaded into the DOM.  
+    - Useful when you place your script in the `<head>` or when you want to ensure *all DOM elements exist* before running your code.  
+- Extra Notes:  
+    - Faster than the `load` event, which waits for all resources (images, CSS, etc.) to finish loading.  
+    - Not needed if you place your `<script>` right before the closing `</body>` tag, since the DOM will already be ready by then.  
+- Best Practice:  
+    - Use `DOMContentLoaded` when manipulating DOM elements early, especially if your JS is loaded in the `<head>`.  
+    - Avoid using it unnecessarily when scripts are already at the end of the document.  
