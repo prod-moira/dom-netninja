@@ -40,6 +40,10 @@ addForm.addEventListener('submit', function(e){
 
     // Now that the element is created and structured, we can now append to the list
     list.appendChild(li);
+
+    // Clear field
+    const input = document.querySelector('#add-book input[type="text"]');
+    input.value = '';
 })
 
 // Hide books
@@ -68,3 +72,19 @@ searchBar.addEventListener('keyup', function(e){
         }
     });
 });
+
+const tabs = document.querySelector('.tabs'); // This is the ul
+const panels = document.querySelectorAll('.panel');
+
+tabs.addEventListener('click', function(e){
+    if(e.target.tagName == "LI"){
+        const targetPanel = document.querySelector(e.target.dataset.target);
+        panels.forEach(function(panel){
+            if(panel == targetPanel){
+                panel.classList.add('active');
+            } else {
+                panel.classList.remove('active');
+            }
+        })
+    }
+})

@@ -285,3 +285,37 @@
     - Use `toLowerCase()` on both input and target text to keep the search case-insensitive.  
     - Convert collections like `HTMLCollection` to arrays with `Array.from()` for easier iteration.  
     - Keep the DOM structure clean and predictable for easier traversal.
+
+## 17: Vid 17 • Creating Tabbed Content
+- This feature allows users to switch between different panels (e.g., "About", "Contact") without reloading the page. Clicking a tab updates which panel is shown based on a `data-target` attribute.  
+
+- In `app.js` or any DOM script:  
+    - `const tabs = document.querySelector('.tabs');`  
+        - Selects the `<ul>` element containing the tab `<li>` items.  
+        - We attach the click event to this `<ul>` for *event delegation*, so we only need one listener for all tabs.  
+    - `const panels = document.querySelectorAll('.panel');`  
+        - Selects all content panels (e.g., About, Contact) so we can loop through them and show/hide as needed.  
+    - `tabs.addEventListener('click', function(e) { ... });`  
+        - Listens for clicks anywhere inside the `.tabs` container.  
+        - Inside, we check if the clicked element is actually a tab `<li>` before running the logic.  
+    - `if (e.target.tagName === "LI") { ... }`  
+        - Ensures we only react when a tab itself is clicked, not when the empty space or child elements are clicked.  
+    - `const targetPanel = document.querySelector(e.target.dataset.target);`  
+        - `e.target` → The element that was clicked.  
+        - `.dataset` → Gives access to all `data-*` attributes on that element as a JavaScript object.  
+        - `.dataset.target` → Retrieves the value of the `data-target` attribute from the clicked tab.  
+        - Example: If HTML is `< li data-target=" # contact" >Contact< /li >`, then `e.target.dataset.target` returns the string `"# contact"`.  
+        - We pass this string to `document.querySelector()` to find the matching panel in the DOM.  
+    - `panels.forEach(function(panel) { ... });`  
+        - Loops over all panels.  
+        - If `panel` is the same as `targetPanel`, add the `active` class to show it; otherwise, remove `active` to hide it.  
+        - Removes the `active` class from all tabs, then adds it to the clicked tab so the styling updates accordingly.  
+- Extra Notes:  
+    - **`data-*` attributes** are a way to store extra information in HTML elements that can be accessed via JavaScript.  
+    - `dataset` automatically converts kebab-case (`data-target`) into camelCase (`dataset.target`).  
+    - Using `data-target` lets us keep the link between tabs and panels flexible — no hardcoded panel IDs in JS.  
+- Best Practice:  
+    - Use event delegation for tab clicks to keep the code efficient.  
+    - Keep your panel IDs consistent with your `data-target` values.  
+    - Manage active states for both tabs and panels so the UI updates visually and functionally.  
+- **Note**: Clear feature for `add-book` was added.
